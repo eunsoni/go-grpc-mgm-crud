@@ -32,38 +32,23 @@ my-go-grpc-service
 └── README.md                    # Documentation for the project
 ```
 
-## Setup Instructions
+요구사항
+- Go 1.20 이상 (권장 1.24)
+- protoc (Protocol Buffers 컴파일러)
+- protoc-gen-go, protoc-gen-go-grpc (Go 플러그인)
 
-1. **Clone the repository:**
-   ```
-   git clone <repository-url>
-   cd my-go-grpc-service
-   ```
+설치 및 실행 (로컬 개발)
+```bash
+# 프로젝트 루트로 이동
+cd /home/eunseon/go_study/gRPC-user-crud/go-grpc-mgm-crud/my-go-grpc-service
 
-2. **Install dependencies:**
-   ```
-   go mod tidy
-   ```
+# 의존성 정리
+go mod tidy
 
-3. **Generate gRPC code:**
-   Run the script to generate Go code from the Protocol Buffers definition:
-   ```
-   ./scripts/gen-proto.sh
-   ```
+# protoc 플러그인(한 번만)
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+export PATH="$PATH:$(go env GOPATH)/bin:$(go env GOBIN)"
 
-4. **Run the application:**
-   ```
-   go run cmd/server/main.go
-   ```
-
-## Usage
-
-Once the server is running, you can interact with the gRPC service using a gRPC client. Make sure to define the client according to the service methods specified in `api/proto/service.proto`.
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
+# .proto에서 Go 코드 생성 (scripts/gen-proto.sh 사용 가능)
+# scripts/gen-proto.sh이 있으면:
