@@ -17,7 +17,7 @@ type Server struct {
 }
 
 func NewServer() *Server {
-	return &Server{s: &svc.Service{}}
+	return &Server{s: svc.NewService()}
 }
 
 func (s *Server) Start(address string) error {
