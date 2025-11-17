@@ -1,0 +1,12 @@
+server:
+  port: 50051
+  timeout: 30s
+database:
+  host: localhost
+  port: 5432
+  user: your_user
+  password: your_password
+  name: your_database
+logging:
+  level: info
+  file: logs/app.log
